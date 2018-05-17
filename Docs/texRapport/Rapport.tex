@@ -1,0 +1,33 @@
+\input{../texLib/preambule}
+\usepackage[french,frenchkw,ruled,vlined]{../texLib/algorithm2e}
+
+\title{\vspace{\fill}\textbf{\Huge Rapport}}
+\author{
+	Frederick Coupvent Des Graviers - Sonny Klotz - Florian Lienhart - Thomas Momenzadeh
+	\vspace{2em}\\
+	\textit{Projet M1 Informatique}\\\textit{Accélération de Aitken quadratique}
+	\vspace{2em}
+}
+
+
+\begin{document}
+\pagenumbering{gobble}\clearpage
+\maketitle\vspace{9em}
+\begin{center}\includegraphics[scale=0.7]{logo.png}\end{center}
+\begin{flushright}Module \textit{Méthodes de ranking et recommandations}\end{flushright}
+
+\newpage
+\tableofcontents
+
+\newpage\clearpage\pagenumbering{arabic}
+
+	\section*{Introduction}	
+	
+	\input{Donnees}
+	\input{Puissances}
+	\input{Aitken}
+	\input{Bilan}
+	
+	\section*{Conclusion}
+		
+\end{document}
