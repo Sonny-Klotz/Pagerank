@@ -15,5 +15,9 @@
 *.synctex.gz(busy)
 *.pdfsyn
 *.o
+Stanford_BerkeleyV2.txt
+wikipedia-20051105V2.txt
+wb-edu.txt
+in-2004v2.txt
 results-*
 .DS_Store

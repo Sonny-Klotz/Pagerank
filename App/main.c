@@ -17,7 +17,6 @@ int main(int argc, char *argv[]) {
 		
 		M = malloc(sizeof(Matrice));
 		import_matrice(web, M); fclose(web);
-		//affiche(M);
 		
 		double *piK = malloc(M->n * sizeof(double));
 		double *piKplus1 = malloc(M->n * sizeof(double));
@@ -34,9 +33,16 @@ int main(int argc, char *argv[]) {
 		//int nbIterations = aitken(M, piK, piKplus1, piKplus2);
 		
 		time(&fin);
-		printf("%d %f", nbIterations, difftime(fin, debut));
+		printf("%d %f\n", nbIterations, difftime(fin, debut));
 		
-		
+		//##### Affichage de la distribution #####
+		/*
+		int i;
+		printf("Distribution\n");
+		for(i = 0; i < M->n; i++) {
+			printf("%f ", piK[i]);
+		}
+		* */
 		
 		free_matrice(M); free(M);
 		free(piK); free(piKplus1); free(piKplus2);

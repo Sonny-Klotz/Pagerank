@@ -1,5 +1,5 @@
 #graphe à tester
-GRAPHE = web1.txt
+GRAPHE = Stanford.txt
 
 #option -g debug pour exécuter avec valgrind : yes / no
 DEBUG = yes
@@ -23,7 +23,7 @@ all: $(EXEC)
 ifeq ($(DEBUG),yes)
 	valgrind ./$(EXEC) graphes/$(GRAPHE) > graphes/results-$(GRAPHE)
 else
-	./$(EXEC) $(GRAPHE) > graphes/results-$(GRAPHE)
+	./$(EXEC) graphes/$(GRAPHE) > graphes/results-$(GRAPHE)
 endif
 
 $(EXEC) : $(OBJ)

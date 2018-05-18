@@ -19,7 +19,7 @@ void calcul_f(double *f, Matrice *M) {
 double calcul_sigma(Matrice *M, double *piK) {
 	
 	int i;
-	double sigma;
+	double sigma = 0.0;
 	
 	double *f = malloc(M->n * sizeof(double));
 	calcul_f(f, M); 
