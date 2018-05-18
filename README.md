@@ -12,6 +12,8 @@ Methode des puissances et accélération de Aitken
 
 Passer à l'étape suivante que s'il n'y a AUCUN problème de mémoire.
 
+N'hésitez pas à créer des fichiers petits (comme web1 etc) pour tester les résultats à la main.
+
 1. Tester d'abord sur les petits graphes. Vérifier les résultats à la main (dessin du graphe et de la matrice), on pourra décommenter les affichages.
 2. Tester sur le plus petit des 6 graphes : "wb-cs-stanford" (37 000) valeurs.
 3. Si aucun problème de mémoire, exécuter l'étape 2 sans le mode debug pour avoir des chronos plus propres.
@@ -19,7 +21,7 @@ Passer à l'étape suivante que s'il n'y a AUCUN problème de mémoire.
 
 ## Utilisation
 
-Modifier dans le Makefile les variables DEBUG et GRAPHE
-Ensuite se placer dans App/ : ```cd App```
-Pour la compilation et l'exécution : ```make```
-Les affifachages (printf) de l'applications sont consultables dans le dossier App/graphes/ fichier results-GRAPHE
+1. Modifier dans le Makefile les variables DEBUG et GRAPHE
+2. Ensuite se placer dans App/ : ```cd App```
+3. Pour la compilation et l'exécution : ```make```
+4. Les affifachages (printf) de l'applications sont consultables dans le dossier App/graphes/ fichier results-GRAPHE
