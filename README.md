@@ -19,7 +19,7 @@ Passer à l'étape suivante que s'il n'y a AUCUN problème de mémoire.
 
 ## Utilisation
 
-Modifier dans le Makefile les variables DEBUG et GRAPHE
-Ensuite se placer dans App/ : ```cd App```
-Pour la compilation et l'exécution : ```make```
-Les affifachages (printf) de l'applications sont consultables dans le dossier App/graphes/ fichier results-GRAPHE
+1. Modifier dans le Makefile les variables DEBUG et GRAPHE
+2. Ensuite se placer dans App/ : ```cd App```
+3. Pour la compilation et l'exécution : ```make```
+4. Les affifachages (printf) de l'applications sont consultables dans le dossier App/graphes/ fichier results-GRAPHE
