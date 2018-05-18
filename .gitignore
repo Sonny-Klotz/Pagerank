@@ -15,4 +15,5 @@
 *.synctex.gz(busy)
 *.pdfsyn
 *.o
+results-*
 .DS_Store
