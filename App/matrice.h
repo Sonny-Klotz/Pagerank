@@ -11,6 +11,6 @@ void affiche(Matrice *M);
 
 double sigma(Matrice *M, double *piK);
 
-void init_distrib(int n, double *a, double *b , double *c);
+void init_distrib(int n, double *a, double *b);
 
 #endif

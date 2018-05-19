@@ -103,12 +103,11 @@ void import_matrice(FILE *web, Matrice *M) {
 	quickSort(M->T, 0, m - 1);
 }
 
-void init_distrib(int n, double *a, double *b , double *c) {
+void init_distrib(int n, double *a, double *b) {
 	
 	int i;
 	for(i = 0; i < n; i++) {
 		a[i] = 1.0 / (double) n;
 		b[i] = 0;
-		c[i] = 0;
 	}
 }

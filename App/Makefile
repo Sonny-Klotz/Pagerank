@@ -1,5 +1,6 @@
-#graphe à tester
-GRAPHE = Stanford.txt
+#graphe et méthode à tester : puissances ou aitken
+GRAPHE = wb-cs-stanford.txt
+METHODE = puissances
 
 #option -g debug pour exécuter avec valgrind : yes / no
 DEBUG = yes
@@ -21,9 +22,9 @@ OBJ = $(SRC:.o=.c)
 #Edition de liens / génération de l'exécutable
 all: $(EXEC)
 ifeq ($(DEBUG),yes)
-	valgrind ./$(EXEC) graphes/$(GRAPHE) > graphes/results-$(GRAPHE)
+	valgrind --track-origins=yes ./$(EXEC) $(METHODE) graphes/$(GRAPHE) > graphes/$(METHODE)-$(GRAPHE)
 else
-	./$(EXEC) graphes/$(GRAPHE) > graphes/results-$(GRAPHE)
+	./$(EXEC) $(METHODE) graphes/$(GRAPHE) > graphes/$(METHODE)-$(GRAPHE)
 endif
 
 $(EXEC) : $(OBJ)

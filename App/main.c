@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
 	time_t debut, fin;
 		
 	FILE *web = NULL;
-	web = fopen(argv[1], "r");
+	web = fopen(argv[2], "r");
 	
 	if(web != NULL) {
 		
@@ -20,8 +20,7 @@ int main(int argc, char *argv[]) {
 		
 		double *piK = malloc(M->n * sizeof(double));
 		double *piKplus1 = malloc(M->n * sizeof(double));
-		double *piKplus2 = malloc(M->n * sizeof(double));
-		init_distrib(M->n, piK, piKplus1, piKplus2);
+		init_distrib(M->n, piK, piKplus1);
 		
 		
 		
@@ -29,8 +28,10 @@ int main(int argc, char *argv[]) {
 		
 		time(&debut);
 		
-		int nbIterations = puissances(M, piK, piKplus1);
-		//int nbIterations = aitken(M, piK, piKplus1, piKplus2);
+		int nbIterations = 0;
+		if(strcmp(argv[1], "puissances") == 0) nbIterations = puissances(M, piK, piKplus1);
+		else if(strcmp(argv[1], "aitken") == 0) nbIterations = aitken(M, piK, piKplus1);
+		else printf("Erreur arguments.\n");
 		
 		time(&fin);
 		printf("%d %f\n", nbIterations, difftime(fin, debut));
@@ -45,10 +46,10 @@ int main(int argc, char *argv[]) {
 		* */
 		
 		free_matrice(M); free(M);
-		free(piK); free(piKplus1); free(piKplus2);
+		free(piK); free(piKplus1);
 	}
 	else
-		printf("Erreur fichier en argument.\n");
+		printf("Erreur arguments.\n");
 	return 0;
 	
 	return 0;

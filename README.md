@@ -21,7 +21,7 @@ N'hésitez pas à créer des fichiers petits (comme web1 etc) pour tester les r�
 
 ## Utilisation
 
-1. Modifier dans le Makefile les variables DEBUG et GRAPHE
+1. Modifier dans le Makefile les variables DEBUG, GRAPHE et METHODE
 2. Ensuite se placer dans App/ : ```cd App```
 3. Pour la compilation et l'exécution : ```make```
-4. Les affifachages (printf) de l'applications sont consultables dans le dossier App/graphes/ fichier results-GRAPHE
+4. Les affifachages (printf) de l'applications sont consultables dans le dossier App/graphes/ fichier "METHODE-GRAPHE"
