@@ -23,13 +23,18 @@
 
 	\section*{Introduction}
 		\paragraph{}Le projet s'inscrit dans le cadre de l'UE \textbf{Méthodes de ranking et recommandations}, et plus particulièrement, nous étudierons l'algorithme \textit{Pagerank} de Google.
-		\paragraph{}Cet algorithme a le rôle de classifier les pages web en attribuant une note de \textbf{pertinence} à chacune des pages. Pour entrer un peu plus dans détails, Google établit un graphe du web à l'aide des pages et des liens hypertextes contenues dans celle-ci.
-		\paragraph{}La majeure problématique consiste à gérer efficacement la masse de données que représente le web. Ainsi, l'enjeu de \textit{Pagerank} va être de traiter efficacement en mémoire le calculer des notes de pertinence.
+		\paragraph{}Cet algorithme a le rôle de classifier les pages web en attribuant une note de \textbf{pertinence} à chacune des pages. Pour entrer un peu plus dans les détails, Google établit un graphe du web à l'aide des pages et des liens hypertextes contenues dans celles-ci.
+		\paragraph{}La majeure problématique consiste à gérer efficacement la masse de données que représente le web. Ainsi, l'enjeu de \textit{Pagerank} va être de traiter efficacement en mémoire le calcul des notes de pertinence.
 		\paragraph{}Ce document va présenter dans une première partie le choix de l'implémentation pour les structures de données utilisées. Nous allons ensuite parler de la méthode des puissances pour le calcul des pertinences pour ensuite étudier une variante, l'accélération de Aitken quadratique. Enfin, nous présenterons les résultats expérimentaux sur six graphes du web.
 		
 	\input{Donnees}
 	\input{Puissances}
 	\input{Aitken}
 	\input{Bilan}
+	
+	\section*{Conclusion}
+		\paragraph{}Pour conclure, le bilan des fonctionnalités de l'application n'est pas satisfaisant. En effet, nous n'avons pas réussi à implémenter l'accélération de Aitken pour mesurer son comportement sur les exemples du sujet. Cela est dû à un manque de temps pour comprendre en détail les mathématiques sous-jacentes de l'accélération de Aitken, nous nous sommes donc retrouver dans l'impossibilité d'implémenter les calculs demandés.
+		\paragraph{}Cela dit, le projet dans son ensemble a été une expérience enrichissante au niveau du travail, et de l'organisation. En effet, le point critique que représente la masse de données utilisées nous a imposé une rigueur au niveau de la structure de notre code (compilation et debug). Mais aussi, le projet nous a permis de nous renforcer du point de vue de la démarche expérimentale et de la présentation des résultats.
+		
 		
 \end{document}

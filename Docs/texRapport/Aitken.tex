@@ -1,4 +1,16 @@
 \section{Accélération de Aitken quadratique}
+
+	principe réduire la complexité en lambda3 de la suite pikplus1 = piK * M grâce à une estimation de la valeur de lambda 2
+		
 	
-	1) estimer lambda 2
-	2) utiliser formule du calcul de piKplus1
+	d'apres le sujet lambda estimé à l'aide de 3 termes successifs de Pi (on calcule lambda2 une fois et on l'utilise pour le reste de l'algo)
+	estimer lambda 2 : Donner la formule pour l'estimation  (pikplus2 - pikplus1) / (pikplus1 - pik) on pourra choisir pi0 pi1 et pi2 pour calculer lambda2
+		pb on sait pas comment implémenter ca
+	
+	on doit estimer aussi u2 = beta2 * v2, v2 vecteur propre de M, => rappeler definition de vecteur propre
+		pareil on sait pas comment calculer ces valeurs
+		
+	Ensuite la fomule de recurrence devient pikplus1 = pik*G - u2 * lambda2 puissance(k)
+	Et donc mtn suite devrait converger comme suite geometrique de raison lambda3
+	
+

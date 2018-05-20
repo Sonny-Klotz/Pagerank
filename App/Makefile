@@ -1,9 +1,9 @@
 #graphe et méthode à tester : puissances ou aitken
-GRAPHE = wb-cs-stanford.txt
+GRAPHE = Stanford.txt
 METHODE = puissances
 
 #option -g debug pour exécuter avec valgrind : yes / no
-DEBUG = yes
+DEBUG = no
 
 ifeq ($(DEBUG),yes)
 	CFLAGS = -g
@@ -28,18 +28,21 @@ else
 endif
 
 $(EXEC) : $(OBJ)
-	@gcc $(CFLAGS) -o $@ $^
+	@gcc -o $@ $^ -lm
 
+#Génération des graphes
+plot:
+	gnuplot normes.p
 
 #Compilation des .c
-main.o :matrice.h puissances.h aitken.h
+main.o : matrice.h puissances.h aitken.h
 
 %.o : %.c def.h
-	@gcc $(CFLAGS) -o $@ -c $<
-
+	@gcc $(CFLAGS) -o $@ -c $< 
+	
 
 #Nettoyage du projet
-.PHONY : $(EXEC) clean mrproper
+.PHONY : $(EXEC) plot clean mrproper
 
 clean:
 	rm -rf *.o

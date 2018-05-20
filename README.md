@@ -7,6 +7,7 @@ Methode des puissances et accélération de Aitken
 * matrice : importation d'une matrice à partir d'un fichier
 * puissances : implémentation de la méthode des puissances Pagerank
 * aitken : implémentation de l'accélération de Aitken
+* normes.p : script génération des courbes avec GNUPLOT
 
 ## Remarque importante
 
@@ -25,3 +26,4 @@ N'hésitez pas à créer des fichiers petits (comme web1 etc) pour tester les r�
 2. Ensuite se placer dans App/ : ```cd App```
 3. Pour la compilation et l'exécution : ```make```
 4. Les affifachages (printf) de l'applications sont consultables dans le dossier App/graphes/ fichier "METHODE-GRAPHE"
+5. ```make plot``` pour générer les courbes à partir des 6 fichiers résultats

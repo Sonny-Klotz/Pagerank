@@ -1,11 +1,55 @@
 \section{Résultats expérimentaux}
-
-	attention berkeley n = 683446
 	
-	alpha 0.85 epsilon 10e-6
+	\subsection{Description des données}
+		\paragraph{}Pour étudier les performances des algorithmes, nous utilisons six graphes du web présentés dans le tableau ci-dessous :
+		
+			\begin{center}\begin{tabular}{clrrr}
+				\hline
+				Graphe du web & nb noeuds & nb arcs & taille \\
+				\hline
+				wb-cs-stanford & 9 914 & 36 854 & 624 Ko \\
+				Stanford & 281 903 & 2 312 497 & 37 Mo \\
+				Stanford-Berkeley & 683 446 & 7 583 376 & 120 Mo \\
+				in-2004 & 1 382 908 & 16 917 053 & 277 Mo \\
+				wikipedia & 1 634 989 & 19 753 078 & 309 Mo \\
+				wb-edu & 9 845 725 & 57 156 537 & 1.06 Go \\
+				\hline
+			\end{tabular}\end{center}
+		
+		\paragraph{}À la consultation de ce tableau, il est forcé de constater du volume que représente ces données, ce qui justifie le choix des implémentations qui a été fait.
+		\paragraph{}Nous voudrions signaler que suite au téléchargement du fichier \textit{Stanford-Berkeley} le nombre de lignes indiquées dans le fichier n'est pas correct, $68344$ au lieu de $683446$.
+		\paragraph{}Le code source est en \textbf{langage C}, le contrôle de l'utilisation correcte de la mémoire a été effectué à l'aide de l'option \textbf{-g} du compilateur \textbf{gcc} et l'outil d'exécution \textbf{valgrind}. Cependant, l'utilisation de ces outils décuplent le temps de calcul, nous avons donc préparer une deuxième version sans debug pour l'utiliser arès avoir vérifier l'utilisation correcte de la mémoire.
+		
+	\subsection{Mesures de performances}
 	
-	Avec et sans debug; fonction de norme / log(norme) en fonction des itérations
-	1graphe pour puissances et 1 pour aitken
-	Ajouter taille en memoire pour description des graphes
-	
-	\paragraph{}Dans cette partie, nous allons
+		\paragraph{}Nous vous présentons dans un premier temps les résultats en temps et en itérations de l'implémentation de la méthode des puissances et de l'accélération de aitken.
+		
+			\begin{center}\begin{tabular}{lrrrrrrr}
+				\hline
+				Graphe du web & nb noeuds & nb arcs & taille & Puis (ité) & Puis (sec) & Aitk (ité) & Aitk (sec) \\
+				\hline
+				wb-cs-stanford & 9 914 & 36 854 & 624 Ko & x & x & x & x \\
+				Stanford & 281 903 & 2 312 497 & 37 Mo & x & x & x & x \\
+				Stanford-Berkeley & 683 446 & 7 583 376 & 120 Mo & x & x & x & x \\
+				in-2004 & 1 382 908 & 16 917 053 & 277 Mo & x & x & x & x \\
+				wikipedia & 1 634 989 & 19 753 078 & 309 Mo & x & x & x & x \\
+				wb-edu & 9 845 725 & 57 156 537 & 1.06 Go & x & x & x & x \\
+				\hline
+			\end{tabular}\end{center}
+			
+		\paragraph{}\colorbox{yellow}{commenter le tableau et décrire la machine utilisée RAM et Processeur}
+		
+		\paragraph{}Il est aussi intéressant d'avoir un compte-rendu visuel pour comparer les méthodes. Les graphes ci-dessous représentent la valeur de $log(\| \Pi^{(k + 1)} - \Pi^{(k)} \|_{1})$ en fonction de l'itération $k$ pour les deux méthodes implémentées pour les six graphes du web. Ces courbes ont été réalisées à l'aide du logiciel \textit{GNUPLOT}.
+		\paragraph{}On rappelle les constantes utilisées : $\alpha = 0.85$ et $\epsilon = 10^{-6}$. Les courbes ont été ajustées à la même échelle pour pouvoir les comparer de manière visuelle.\\
+		
+		\begin{minipage}[c]{.46\linewidth}
+			\begin{center}
+				\includegraphics[scale=0.5]{plot-wb-cs-stanford.png}
+			\end{center}
+		\end{minipage} \hfill
+		\begin{minipage}[c]{.46\linewidth}
+			\begin{center}
+				\includegraphics[scale=0.5]{plot-Stanford.png}
+			\end{center}
+		\end{minipage}
+			

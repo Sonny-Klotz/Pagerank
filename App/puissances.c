@@ -38,7 +38,7 @@ int puissances(Matrice *M, double *piK, double *piKplus1) {
 	int k = 0;
 	int i, j;
 	
-	printf("Iteration - Norme\n");
+	printf("# Iteration - Norme\n");
 	double somme, norme, sigma;
 	do {
 		norme = 0.0;
@@ -62,7 +62,7 @@ int puissances(Matrice *M, double *piK, double *piKplus1) {
 		
 		//on incrémente l'itération
 		k++;
-		printf("%d %f\n", k, norme);
+		printf("%d %f\n", k, log(norme));
 	}while(norme > 10e-6);
  	
  	return k;

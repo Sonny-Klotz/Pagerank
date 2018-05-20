@@ -3,16 +3,16 @@
 	\subsection{Le graphe du web}
 		
 		\paragraph{}Les graphes du web sont représentées dans notre programme sous la forme d'une matrice du web. Chaque ligne de la matrice représente une page web et les valeurs non nulles indique qu'il existe un lien hypertexte vers une autre page.
-		\paragraph{}La taille du web étant immense, les graphes pourront aussi être représentés par des fichiers de données volumineux. À titre d'exemple, le fichier \textit{wb-edu.txt} est un fichier d'une taille de 1 Go.
-		\paragraph{}Il faut tout de même noter le caractère creux de notre matrice. En effet, la matrice de \textit{wb-edu.txt} contient environ $10^{7}$ lignes, ce qui nous donnerait, si on représente notre matrice entièrement, $10^{14}$ valeurs à stocker. Cependant cette matrice serait constituées majoritairement de zéros puisque l'on sait le nombre de valeurs non nulles à environ $6 \cdot 10^{7}$ valeurs ce qui est beaucoup plus envisageable en terme de mémoire.
-		\paragraph{}L'enjeu va donc être d'implémenter les méthodes en exploitant au mieux le caractère creux de la matrice.
+		\paragraph{}La taille du web étant immense, les graphes pourront aussi être représentés par des fichiers de données volumineux. À titre d'exemple, le fichier \textit{wb-edu.txt} du sujet est un fichier d'une taille de 1 Go.
+		\paragraph{}Il faut tout de même noter le caractère creux de notre matrice. En effet, la matrice de \textit{wb-edu.txt} contient environ $10^{7}$ lignes, ce qui nous donnerait, si on représente notre matrice entièrement, $10^{14}$ valeurs à stocker. Cette matrice serait constituée majoritairement de zéros puisque l'on sait le nombre de valeurs non nulles à environ $6 \cdot 10^{7}$, ce qui est beaucoup plus envisageable en terme de mémoire.
+		\paragraph{}L'enjeu va donc être d'implémenter les algorithme du calcul de \textit{Pagerank} en exploitant au mieux le caractère creux de la matrice.
 		
 	\subsection{Implémentation}
 
 		\paragraph{}Pour faire un choix d'implémentation convenable, il faut prendre de l'avance quant aux tâches réalisées par notre programme. L'essentiel de la complexité va reposer sur deux opérations, l'importation de la matrice à partir du fichier, et, le calcul des pertinences.
-		\paragraph{}Le calcul des pertinences repose sur un produit vecteur-matrice. Soientt $n$ le nombre de noeuds du graphe du web, $\pi$ notre vecteur et $G$ notre matrice, le produit s'effectue de la manière suivante :
+		\paragraph{}Le calcul des pertinences repose sur un produit vecteur-matrice. Soient $n$ le nombre de noeuds du graphe du web, $\Pi$ notre vecteur de pertinence et $G$ notre matrice, le produit s'effectue de la manière suivante :
 			\begin{align*}
-				(\pi \cdot G)[i] = \sum_{j = 1}^{n} \pi[i] \cdot G[j, i]
+				\forall i \in \{1 , \cdots , n\}, (\Pi \cdot G)[i] = \sum_{j = 1}^{n} \Pi[i] \cdot G[j, i]
 			\end{align*}
-		\paragraph{}On effectue $n$ produit vecteur-colonne. Ainsi pour pouvoir ignorer les valeurs nulles de $G$ (car elles ne modifient pas la valeur de la somme), il faut avoir un stockage de $G$ sur les \textbf{colonnes}.
+		\paragraph{}On effectue $n$ produits vecteur-colonne. Ainsi pour pouvoir ignorer les valeurs nulles de $G$ (car elles ne modifient pas la valeur de la somme), il faut avoir un stockage de $G$ sur les \textbf{colonnes}.
 		\paragraph{}Maintenant, pour ce qui est des fichiers utilisés, ils utilisent une structure organisée selon les lignes. Ainsi, notre travail va être de lire linéairement notre fichier pour stocker les arcs, puis d'effectuer un tri rapide pour réorganiser nos arcs en fonction des colonnes. Un tel travail s'effectue en $O(n \cdot log(n))$ en moyenne.

@@ -34,8 +34,8 @@ int main(int argc, char *argv[]) {
 		else printf("Erreur arguments.\n");
 		
 		time(&fin);
-		printf("nbIterations - secondes\n");
-		printf("%d %f\n", nbIterations, difftime(fin, debut));
+		printf("# nbIterations - secondes\n");
+		printf("# %d %f\n", nbIterations, difftime(fin, debut));
 		
 		//##### Affichage de la distribution #####
 		/*
