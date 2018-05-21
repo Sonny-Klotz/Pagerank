@@ -111,3 +111,13 @@ void init_distrib(int n, double *a, double *b) {
 		b[i] = 0;
 	}
 }
+
+void init_distrib_aitken(int n, double *a, double *b, double *c) {
+	
+	int i;
+	for(i = 0; i < n; i++) {
+		a[i] = 1.0 / (double) n;
+		b[i] = 0;
+		c[i] = 0;
+	}
+}

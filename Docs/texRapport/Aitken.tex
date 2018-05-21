@@ -1,16 +1,37 @@
 \section{Accélération de Aitken quadratique}
 
-	principe réduire la complexité en lambda3 de la suite pikplus1 = piK * M grâce à une estimation de la valeur de lambda 2
-		
+	\paragraph{}Soit $\Pi^{(0)} = \sum_{i = 1}^{n} \beta_{i}\vec{v_{i}}$ où $\beta_{i}$ est la composante $i$ de $\Pi^{(0)}$ dans la décomposition en $\{ \vec{v_{1}}, \cdots \vec{v_{n}} \} $ vecteurs propres de $M$, on a : \[\Pi^{(k + 1)} = \sum_{i = 1}^{n} \beta_{i} \cdot \lambda_{i}^{k} \cdot \vec{v_{i}}\]
+	La complexité de la méthode des puissances est en la deuxième valeur propre. Le principe est de réduire la complexité en $\lambda_{3}$ de la suite $\Pi^{(k + 1)} = \Pi^{(k)} \cdot M$ grâce à une estimation des valeurs de $\lambda_{2}$ et $ \beta_{i} \cdot \vec{v_{i}}$. On rappelle que les $\lambda_{i}$ sont triés de manière décroissante et on a $\lambda_{1} = 1$.
 	
-	d'apres le sujet lambda estimé à l'aide de 3 termes successifs de Pi (on calcule lambda2 une fois et on l'utilise pour le reste de l'algo)
-	estimer lambda 2 : Donner la formule pour l'estimation  (pikplus2 - pikplus1) / (pikplus1 - pik) on pourra choisir pi0 pi1 et pi2 pour calculer lambda2
-		pb on sait pas comment implémenter ca
+	\paragraph{}Ces estimations sont faites à l'aide de trois termes successifs de la distribution, et, incorporés périodiquement dans la méthode des puissances, ils vont permettre d'obtenir une meilleure estimation de la distribution et ainsi converger plus rapidement. Nous allons donc présenter une variante de l'algorithme des puissances en utilisant les estimations faites avec la méthode de Aitken.\\
 	
-	on doit estimer aussi u2 = beta2 * v2, v2 vecteur propre de M, => rappeler definition de vecteur propre
-		pareil on sait pas comment calculer ces valeurs
+	\begin{adjustwidth}{1.5cm}{1.5cm} 
+		\begin{algorithm}[H]
+			\caption{Accélération de Aitken}
+			\Donnees{Vecteur $\Pi$ de pertinence de taille $n$, Matrice du web $M$, $e$ vecteur de $1$ de taille $n$}
+			$k \gets 0$ \text{ et }
+			$\Pi^{(k)} \gets \frac{1}{n} \cdot e$\; 
+			\Repeter{ $ \| \Pi^{(k)} - \Pi^{(k - 1)} \|_{1} < \epsilon$ }{
+				$k \gets k + 1$\;
+				\Pour{$i \gets 1$ allant à $n$}{
+					$\Pi^{(k)}[i] \gets \alpha \cdot (\sum_{j = 1}^{n} \Pi^{(k - 1)}[j] \cdot M[j,i]) + \frac{1 - \alpha}{n} + \frac{\sigma \cdot \alpha}{n}$\;
+				}
+				Périodiquement : $\Pi^{(k)} \gets Estimation(\Pi^{(k)}$, $\Pi^{(k - 1)}$, $\Pi^{(k - 2)})$\;
+			}
+		\end{algorithm}
+		\end{adjustwidth}
 		
-	Ensuite la fomule de recurrence devient pikplus1 = pik*G - u2 * lambda2 puissance(k)
-	Et donc mtn suite devrait converger comme suite geometrique de raison lambda3
+		\begin{adjustwidth}{1.5cm}{1.5cm} 
+		\begin{algorithm}[H]
+			\caption{Estimation}
+			\Donnees{Vecteurs $\Pi^{(k)}$, $\Pi^{(k - 1)}$ et $\Pi^{(k - 2)}$}
+				\Pour{$i \gets 1$ allant à $n$}{
+					$g[i] \gets (\Pi^{(k - 1)}[i] - \Pi^{(k - 2)}[i])^{2}$\;
+					$h[i] \gets \Pi^{(k)}[i] - 2 \cdot \Pi^{(k - 1)}[i] + \Pi^{(k - 2)}[i]$\;
+					$res[i] \gets \Pi^{(k)}[i] - \frac{g[i]}{h[i]}$\; 
+				}
+				\Retour $res$\;
+		\end{algorithm}
+		\end{adjustwidth}
 	
 

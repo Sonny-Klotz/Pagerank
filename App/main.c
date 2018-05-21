@@ -20,8 +20,12 @@ int main(int argc, char *argv[]) {
 		
 		double *piK = malloc(M->n * sizeof(double));
 		double *piKplus1 = malloc(M->n * sizeof(double));
-		init_distrib(M->n, piK, piKplus1);
-		
+
+		if(strcmp(argv[1], "puissances") == 0) init_distrib(M->n, piK, piKplus1);
+		else if(strcmp(argv[1], "aitken") == 0) {
+			double *piKplus2 = malloc(M->n * sizeof(double));
+			init_distrib_aitken(M->n, piK, piKplus1, piKplus2);
+		}
 		
 		
 		//##### calcul des pertinences #####
@@ -48,6 +52,7 @@ int main(int argc, char *argv[]) {
 		
 		free_matrice(M); free(M);
 		free(piK); free(piKplus1);
+		if(strcmp(argv[1], "aitken") == 0) free(piKplus2);
 	}
 	else
 		printf("Erreur arguments.\n");

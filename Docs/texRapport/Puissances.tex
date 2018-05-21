@@ -8,7 +8,7 @@
 			\Donnees{Vecteur $\Pi$ de pertinence de taille $n$, Matrice du web $M$, $e$ vecteur de $1$ de taille $n$}
 			$k \gets 0$ \text{ et }
 			$\Pi^{(k)} \gets \frac{1}{n} \cdot e$\; 
-			\Repeter{ $\| \Pi^{(k + 1)} - \Pi^{(k)} \|_{1} > \epsilon$ }{
+			\Repeter{ $\| \Pi^{(k)} - \Pi^{(k - 1)} \|_{1} < \epsilon$ }{
 				$k \gets k + 1$\;
 				\Pour{$i \gets 1$ allant à $n$}{
 					$\Pi^{(k)}[i] \gets \alpha \cdot (\sum_{j = 1}^{n} \Pi^{(k - 1)}[j] \cdot M[j,i]) + \frac{1 - \alpha}{n} + \frac{\sigma \cdot \alpha}{n}$\;

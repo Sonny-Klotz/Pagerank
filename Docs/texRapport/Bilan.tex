@@ -28,16 +28,16 @@
 				\hline
 				Graphe du web & nb noeuds & nb arcs & taille & Puis (ité) & Puis (sec) & Aitk (ité) & Aitk (sec) \\
 				\hline
-				wb-cs-stanford & 9 914 & 36 854 & 624 Ko & x & x & x & x \\
-				Stanford & 281 903 & 2 312 497 & 37 Mo & x & x & x & x \\
-				Stanford-Berkeley & 683 446 & 7 583 376 & 120 Mo & x & x & x & x \\
-				in-2004 & 1 382 908 & 16 917 053 & 277 Mo & x & x & x & x \\
-				wikipedia & 1 634 989 & 19 753 078 & 309 Mo & x & x & x & x \\
-				wb-edu & 9 845 725 & 57 156 537 & 1.06 Go & x & x & x & x \\
+				wb-cs-stanford & 9 914 & 36 854 & 624 Ko & 39 & < 1 & x & x \\
+				Stanford & 281 903 & 2 312 497 & 37 Mo & 52 & 6 & x & x \\
+				Stanford-Berkeley & 683 446 & 7 583 376 & 120 Mo & 50 & 7 & x & x \\
+				in-2004 & 1 382 908 & 16 917 053 & 277 Mo & 48 & 14 & x & x \\
+				wikipedia & 1 634 989 & 19 753 078 & 309 Mo & 43 & 40 & x & x \\
+				wb-edu & 9 845 725 & 57 156 537 & 1.06 Go & 47 & 60 & x & x \\
 				\hline
 			\end{tabular}\end{center}
 			
-		\paragraph{}\colorbox{yellow}{commenter le tableau et décrire la machine utilisée RAM et Processeur}
+		\paragraph{}La machine utilisée pour effectuer ces calculs possède un processeur Inter Core i7-6500U cadencé à 2.50GHz ainsi que 3 Go de RAM allouée pour la machine virtuelle sur laquelle se sont déroulés les programmes.
 		
 		\paragraph{}Il est aussi intéressant d'avoir un compte-rendu visuel pour comparer les méthodes. Les graphes ci-dessous représentent la valeur de $log(\| \Pi^{(k + 1)} - \Pi^{(k)} \|_{1})$ en fonction de l'itération $k$ pour les deux méthodes implémentées pour les six graphes du web. Ces courbes ont été réalisées à l'aide du logiciel \textit{GNUPLOT}.
 		\paragraph{}On rappelle les constantes utilisées : $\alpha = 0.85$ et $\epsilon = 10^{-6}$. Les courbes ont été ajustées à la même échelle pour pouvoir les comparer de manière visuelle.\\
@@ -51,5 +51,28 @@
 			\begin{center}
 				\includegraphics[scale=0.5]{plot-Stanford.png}
 			\end{center}
-		\end{minipage}
+		\end{minipage}\\
+		\begin{minipage}[c]{.46\linewidth}
+			\begin{center}
+				\includegraphics[scale=0.5]{plot-Stanford-Berkeley.png}
+			\end{center}
+		\end{minipage} \hfill
+		\begin{minipage}[c]{.46\linewidth}
+			\begin{center}
+				\includegraphics[scale=0.5]{plot-in-2004.png}
+			\end{center}
+		\end{minipage}\\
+		\begin{minipage}[c]{.46\linewidth}
+			\begin{center}
+				\includegraphics[scale=0.5]{plot-wikipedia.png}
+			\end{center}
+		\end{minipage} \hfill
+		\begin{minipage}[c]{.46\linewidth}
+			\begin{center}
+				\includegraphics[scale=0.5]{plot-wb-edu.png}
+			\end{center}
+		\end{minipage}\\
+
+
+	
 			

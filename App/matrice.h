@@ -13,4 +13,6 @@ double sigma(Matrice *M, double *piK);
 
 void init_distrib(int n, double *a, double *b);
 
+void init_distrib_aitken(int n, double *a, double *b, double *c);
+
 #endif
