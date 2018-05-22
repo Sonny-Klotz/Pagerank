@@ -1,6 +1,6 @@
 #include "puissances.h"
 
-int puissances(Matrice *M, double *piK, double *piKplus1) {
+int puissances(Matrice *M, double *piK, double *piKmoins1) {
 	
 	// k = nombre d'itérations (comme dans piK)
 	int k = 0;
@@ -11,21 +11,19 @@ int puissances(Matrice *M, double *piK, double *piKplus1) {
 	do {
 		norme = 0.0;
 		sigma = calcul_sigma(M , piK);
-		
+		//ancien pi prend nouveau pi 
+		for (i = 0; i < M->n; i++) {
+			piKmoins1[i] = piK[i];
+			piK[i] = 0.0;
+		}
 		for (i = 0; i < M->n; i++) {
 			
 			//multiplication ligne colonne
 			for (j = M->debCol[i]; j < M->debCol[i + 1]; j++) {
-				piKplus1[i] += piK[M->T[j].i] * M->T[j].p;
+				piK[i] += piKmoins1[M->T[j].i] * M->T[j].p;
 			}
-			piKplus1[i] = ALPHA * piKplus1[i] + (1 - ALPHA + sigma * ALPHA) / M->n;
-			norme += fabs(piKplus1[i] - piK[i]);
-		}
-		
-		//ancien pi prend nouveau pi 
-		for (i = 0; i < M->n; i++) {
-			piK[i] = piKplus1[i];
-			piKplus1[i] = 0.0;
+			piK[i] = ALPHA * piK[i] + (1 - ALPHA + sigma * ALPHA) / M->n;
+			norme += fabs(piK[i] - piKmoins1[i]);
 		}
 		
 		//on incrémente l'itération

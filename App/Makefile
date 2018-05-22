@@ -1,9 +1,9 @@
 #graphe et méthode à tester : puissances ou aitken
 GRAPHE = wb-cs-stanford.txt
-METHODE = aitken
+METHODE = puissances
 
 #option -g debug pour exécuter avec valgrind : yes / no
-DEBUG = yes
+DEBUG = no
 
 ifeq ($(DEBUG),yes)
 	CFLAGS = -g

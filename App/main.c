@@ -20,10 +20,11 @@ int main(int argc, char *argv[]) {
 		
 		double *piK = malloc(M->n * sizeof(double));
 		double *piKmoins1 = malloc(M->n * sizeof(double));
-
+		double *piKmoins2;
+		
 		if(strcmp(argv[1], "puissances") == 0) init_distrib(M->n, piK, piKmoins1);
 		else if(strcmp(argv[1], "aitken") == 0) {
-			double *piKmoins2 = malloc(M->n * sizeof(double));
+			piKmoins2 = malloc(M->n * sizeof(double));
 			init_distrib_aitken(M->n, piK, piKmoins1, piKmoins2);
 		}
 		
@@ -48,7 +49,7 @@ int main(int argc, char *argv[]) {
 		for(i = 0; i < M->n; i++) {
 			printf("%f ", piK[i]);
 		}
-		* */
+		*/
 		
 		free_matrice(M); free(M);
 		free(piK); free(piKmoins1);

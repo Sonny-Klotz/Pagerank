@@ -103,22 +103,22 @@ void import_matrice(FILE *web, Matrice *M) {
 	quickSort(M->T, 0, m - 1);
 }
 
-void init_distrib(int n, double *a, double *b) {
+void init_distrib(int n, double *piK, double *piKmoins1) {
 	
 	int i;
 	for(i = 0; i < n; i++) {
-		a[i] = 1.0 / (double) n;
-		b[i] = 0;
+		piK[i] = 1.0 / (double) n;
+		piKmoins1[i] = 0;
 	}
 }
 
-void init_distrib_aitken(int n, double *a, double *b, double *c) {
+void init_distrib_aitken(int n, double *piK, double *piKmoins1, double *piKmoins2) {
 	
 	int i;
 	for(i = 0; i < n; i++) {
-		a[i] = 1.0 / (double) n;
-		b[i] = 0;
-		c[i] = 0;
+		piK[i] = 1.0 / (double) n;
+		piKmoins1[i] = 0;
+		piKmoins2[i] = 0;
 	}
 }
 
