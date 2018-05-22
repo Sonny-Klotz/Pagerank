@@ -2,6 +2,7 @@
 #define PUISSANCES_H
 
 #include "def.h"
+#include "matrice.h"
 
 /**
  * Retourne le nombre d'itérations dans le calcul de la distribution

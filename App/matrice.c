@@ -121,3 +121,36 @@ void init_distrib_aitken(int n, double *a, double *b, double *c) {
 		c[i] = 0;
 	}
 }
+
+
+void calcul_f(double *f, Matrice *M) {
+	
+	int i, j;
+	int compteur = 0 ; //1 si il trouve que des 0 sur ligne i sinon 0 
+	for (i = 0; i < M->n; i++) {
+		for (j = M->debCol[i]; j < M->debCol[i + 1]; j++) {	
+			if (M->T[j].p != 0.0) { //on parcours la ligne i, si on trouve une valeur autre que 0 compteur = 1
+				compteur = 1;
+			}
+		}
+		if (compteur == 0) f[i] = 1;
+		else f[i] = 0;
+		compteur = 0;
+	}		
+}
+
+double calcul_sigma(Matrice *M, double *piK) {
+	
+	int i;
+	double sigma = 0.0;
+	
+	double *f = malloc(M->n * sizeof(double));
+	calcul_f(f, M); 
+
+	for ( i = 0; i < M->n; i++) {
+		sigma = sigma + f[i] * piK[i];
+	}
+	
+	free(f);
+	return sigma;
+}

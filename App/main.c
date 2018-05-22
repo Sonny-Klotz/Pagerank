@@ -19,12 +19,12 @@ int main(int argc, char *argv[]) {
 		import_matrice(web, M); fclose(web);
 		
 		double *piK = malloc(M->n * sizeof(double));
-		double *piKplus1 = malloc(M->n * sizeof(double));
+		double *piKmoins1 = malloc(M->n * sizeof(double));
 
-		if(strcmp(argv[1], "puissances") == 0) init_distrib(M->n, piK, piKplus1);
+		if(strcmp(argv[1], "puissances") == 0) init_distrib(M->n, piK, piKmoins1);
 		else if(strcmp(argv[1], "aitken") == 0) {
-			double *piKplus2 = malloc(M->n * sizeof(double));
-			init_distrib_aitken(M->n, piK, piKplus1, piKplus2);
+			double *piKmoins2 = malloc(M->n * sizeof(double));
+			init_distrib_aitken(M->n, piK, piKmoins1, piKmoins2);
 		}
 		
 		
@@ -33,8 +33,8 @@ int main(int argc, char *argv[]) {
 		time(&debut);
 		
 		int nbIterations = 0;
-		if(strcmp(argv[1], "puissances") == 0) nbIterations = puissances(M, piK, piKplus1);
-		else if(strcmp(argv[1], "aitken") == 0) nbIterations = aitken(M, piK, piKplus1);
+		if(strcmp(argv[1], "puissances") == 0) nbIterations = puissances(M, piK, piKmoins1);
+		else if(strcmp(argv[1], "aitken") == 0) nbIterations = aitken(M, piK, piKmoins1, piKmoins2);
 		else printf("Erreur arguments.\n");
 		
 		time(&fin);
@@ -51,8 +51,8 @@ int main(int argc, char *argv[]) {
 		* */
 		
 		free_matrice(M); free(M);
-		free(piK); free(piKplus1);
-		if(strcmp(argv[1], "aitken") == 0) free(piKplus2);
+		free(piK); free(piKmoins1);
+		if(strcmp(argv[1], "aitken") == 0) free(piKmoins2);
 	}
 	else
 		printf("Erreur arguments.\n");
