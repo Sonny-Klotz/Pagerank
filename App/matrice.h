@@ -11,8 +11,8 @@ void affiche(Matrice *M);
 
 double sigma(Matrice *M, double *piK);
 
-void init_distrib(int n, double *a, double *b);
+void init_distrib(int n, double *piK, double *piKmoins1);
 
-void init_distrib_aitken(int n, double *a, double *b, double *c);
+void init_distrib_aitken(int n, double *piK, double *piKmoins1, double *piKmoins2);
 
 #endif
